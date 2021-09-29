@@ -5,8 +5,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import menu.MenuBoundary;
 
-public class LoginBoundary extends Application {
+ public class LoginBoundary extends Application {
 
     private TextField password = new TextField();
     private TextField txtEmail = new TextField();
@@ -24,7 +25,7 @@ public class LoginBoundary extends Application {
 
     private boolean permitido = false;
 
-    //private MenuBoundary menuTela = new MenuBoundary();
+    private MenuBoundary menuTela = new MenuBoundary();
 
     public static void main(String[] args) {
         Application.launch(LoginBoundary.class, args);
@@ -72,7 +73,16 @@ public class LoginBoundary extends Application {
         pPane.getChildren().addAll(lblEmail, txtEmail, btnEntrar, lblSenha, txtSenha,  check, password);
 
         btnEntrar.setOnAction((e) -> {
-            permitido = logControl.validarLogin(boundaryToEntity());
+            Stage stage = new Stage();
+            primaryStage.close();
+            try {
+                menuTela.start(stage);
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+
+
+            /*permitido = logControl.validarLogin(boundaryToEntity());
 
             if(permitido){
                 alertMess.setHeaderText("tudo certo, bora pro menu");
@@ -81,15 +91,15 @@ public class LoginBoundary extends Application {
                     String nvnPerm = logControl.getPermissao();
                     Stage stage = new Stage();
                     primaryStage.close();
-                    //menuTela.start(stage);
-                    //menuTela.menuComum(nvnPerm);
+                    menuTela.start(stage);
+                    menuTela.menuComum(nvnPerm);
                 } catch (Exception exception) {
                     exception.printStackTrace();
                 }
             }else{
                 alertWarn.setHeaderText("ta errado");
                 alertWarn.showAndWait();
-            }
+            }*/
         });
 
         primaryStage.setScene(scCeneLogin);
