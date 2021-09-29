@@ -1,11 +1,14 @@
 package menu;
 
+//import estoque.EstoqueBoundary;
+import funcionario.FuncionarioBoundary;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+//import vendas.VendasBoundary;
 
 public class MenuBoundary extends Application {
 
@@ -13,6 +16,10 @@ public class MenuBoundary extends Application {
     private Button btnFuncionario = new Button("Gerenciar \n" + "Funcionario");
     private Button btnCaixa = new Button("Caixa");
     private Button btnVenda = new Button("Venda");
+
+    private FuncionarioBoundary funcTela = new FuncionarioBoundary();
+    //private EstoqueBoundary estTela = new EstoqueBoundary();
+    //private VendasBoundary vendTela = new VendasBoundary();
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -36,8 +43,8 @@ public class MenuBoundary extends Application {
         btnFuncionario.setOnAction((e) -> {
             Stage stageFunc = new Stage();
             try {
-                System.out.println("Apertaram aqui");
-                //funcTela.start(stageFunc);
+                //System.out.println("Apertaram aqui");
+                funcTela.start(stageFunc);
             } catch (Exception exception) {
                 exception.printStackTrace();
             }
