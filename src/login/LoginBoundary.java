@@ -3,9 +3,14 @@ import javafx.application.Application;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import menu.MenuBoundary;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
  public class LoginBoundary extends Application {
 
@@ -32,7 +37,7 @@ import menu.MenuBoundary;
     }
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws FileNotFoundException {
         Pane pPane = new Pane();
         pPane.getStylesheets().add(LoginBoundary.class.getResource("LoginStyle.css").toExternalForm());
         Scene scCeneLogin = new Scene(pPane, 500, 330);
@@ -41,11 +46,11 @@ import menu.MenuBoundary;
         Label lblEmail = new Label("Email:");
         Label lblSenha = new Label("Senha:");
 
-        /*Image img = new Image(new FileInputStream("img/logopd3.png"));
+        Image img = new Image(new FileInputStream("img/logopd3.png"));
         ImageView imgLogo = new ImageView(img);
         imgLogo.relocate(-25, 15);
         imgLogo.setFitHeight ( 300 );
-        imgLogo.setFitWidth ( 250 );*/
+        imgLogo.setFitWidth ( 250 );
 
         lblEmail.relocate(240, 90);
         txtEmail.relocate(240, 110);
@@ -69,8 +74,8 @@ import menu.MenuBoundary;
         password.relocate(240,170);
 
         btnEntrar.relocate(325, 250);
-                                                                                    //imgLogo,
-        pPane.getChildren().addAll(lblEmail, txtEmail, btnEntrar, lblSenha, txtSenha,  check, password);
+
+        pPane.getChildren().addAll(lblEmail, txtEmail, btnEntrar, lblSenha, txtSenha, imgLogo, check, password);
 
         btnEntrar.setOnAction((e) -> {
             Stage stage = new Stage();

@@ -1,0 +1,8 @@
+.button {
+    -fx-min-height: 100;
+    -fx-min-width: 100;
+    -fx-font-size: 15;
+    -fx-text-alignment: center;
+    -fx-faint-focus-color: transparent;
+    -fx-focus-color: rgb(251, 156, 88);
+}
