@@ -1,0 +1,92 @@
+CREATE DATABASE bdBiblioteca;
+
+go
+
+USE bdBiblioteca;
+
+go
+
+CREATE TABLE tbFUNCIONARIO(
+    CODIGO INT PRIMARY KEY,
+    NOME VARCHAR (50) NOT NULL,
+    EMAIL VARCHAR (200) NOT NULL,
+    CONFIRMA_EMAIL VARCHAR (200) NOT NULL,
+    PERMISSAO CHAR(10) NOT NULL,
+    SENHA VARCHAR (50) NOT NULL,
+    CONFIRMA_SENHA VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE tbEDITORA(
+    CODIGO_EDITORA INT PRIMARY KEY,
+    NOME_EDITORA VARCHAR (50) NOT NULL
+);
+
+CREATE TABLE tbLIVRO(
+    ISBN INT PRIMARY KEY,
+    TITULO VARCHAR (50) NOT NULL,
+    AUTOR CHAR (15) NOT NULL,
+    EDITORA INT, FOREIGN KEY (EDITORA) REFERENCES tbEDITORA(CODIGO_EDITORA),
+    QUANTIDADE_ESTOQUE INT,
+    QUANTIDADE_DISPONIVEL INT
+);
+
+CREATE TABLE tbALUNO(
+    RA INT PRIMARY KEY,
+    NOME VARCHAR (50) NOT NULL,
+    EMAIL VARCHAR (200) NOT NULL,
+    CELULAR INT (11) NOT NULL,
+    SITUACAO VARCHAR(20),
+    PENALIDADE VARCHAR(200),
+    DESCRICAO VARCHAR(200)
+);
+
+CREATE TABLE tbEMPRESTIMO(
+    CODIGO_EMPRESTIMO INT PRIMARY KEY,
+    RA_ALUNO INT, FOREIGN KEY (RA_ALUNO) REFERENCES tbALUNO(RA),
+    NOME_ALUNO VARCHAR(50),
+    CELULAR_ALUNO INT(11),
+    CODIGO_LIVRO INT, FOREIGN KEY (CODIGO_LIVRO) REFERENCES tbLivro(ISBN),
+    TITULO_LIVRO VARCHAR(50),
+    DATA_EMPRESTIMO DATE,
+    DATA_ENTREGA DATE,
+    SITUACAO_EMPRESTIMO VARCHAR(20)
+);
+
+
+/*Insert da tabela Funcionario*/
+
+INSERT INTO tbFUNCIONARIO VALUES(
+    1,
+    'COMUM',
+    'COMUN@COMUUM.COM',
+    'COMUN@COMUUM.COM',
+    'COMUM',
+    'COMUM1234',
+    'COMUM1234'
+);
+
+/*Insert da tabela Editora*/
+
+INSERT INTO tbEDITORA
+(CODIGO_EDITORA,NOME_EDITORA)
+VALUES
+    ( 1, 'Geração Editorial'),
+    ( 2, 'Rocco'),
+    ( 3, 'Intrínseca'),
+    ( 4, 'Pottermore Publishing'),
+    ( 5, 'V&R Editoras'),
+    ( 6, 'Geração Editorial')
+;
+
+/*Insert da tabela Livro*/
+
+INSERT INTO tbLIVRO
+    (ISBN, TITULO, AUTOR, EDITORA, QUANTIDADE_ESTOQUE, QUANTIDADE_DISPONIVEL)
+VALUES
+    (1111,'O Pequeno Príncipe','Antoine de Saint-Exupéry', 1, 10, 2),
+    (1112,'Harry Potter e a criança amaldiçoada','J.K. Rowling', 2, 2, 1),
+    (1113,'O ladrão de raios(Percy Jackson e os Olimpianos)','Rick Riordan', 3, 5, 4),
+    (1114,'ANIMAIS FANTÁSTICOS E ONDE HABITAM','J.K. Rowling', 4, 1, 0),
+    (1115,'Diário de um Banana','Jeff Kinney', 5, 8, 2),
+    (1116,'A Arte da guerra: Os treze capítulos originais','Sun Tzu', 6, 15, 6)
+;

@@ -1,4 +1,5 @@
  package login;
+import funcionario.FuncionarioController;
 import javafx.application.Application;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Scene;
@@ -23,7 +24,7 @@ import java.io.FileNotFoundException;
     private Button btnEntrar = new Button("Entrar");
 
     private LoginController logControl = new LoginController();
-    //private FuncionarioController adm = new FuncionarioController();
+    private FuncionarioController adm = new FuncionarioController();
 
     private Alert alertWarn = new Alert(Alert.AlertType.WARNING);
     private Alert alertMess = new Alert(Alert.AlertType.INFORMATION);
@@ -41,7 +42,7 @@ import java.io.FileNotFoundException;
         Pane pPane = new Pane();
         pPane.getStylesheets().add(LoginBoundary.class.getResource("LoginStyle.css").toExternalForm());
         Scene scCeneLogin = new Scene(pPane, 500, 330);
-        //adm.admin();
+        adm.admin();
 
         Label lblEmail = new Label("Email:");
         Label lblSenha = new Label("Senha:");
@@ -77,17 +78,9 @@ import java.io.FileNotFoundException;
 
         pPane.getChildren().addAll(lblEmail, txtEmail, btnEntrar, lblSenha, txtSenha, imgLogo, check, password);
 
+
         btnEntrar.setOnAction((e) -> {
-            Stage stage = new Stage();
-            primaryStage.close();
-            try {
-                menuTela.start(stage);
-            } catch (Exception exception) {
-                exception.printStackTrace();
-            }
-
-
-            /*permitido = logControl.validarLogin(boundaryToEntity());
+            permitido = logControl.validarLogin(boundaryToEntity());
 
             if(permitido){
                 alertMess.setHeaderText("tudo certo, bora pro menu");
@@ -104,7 +97,7 @@ import java.io.FileNotFoundException;
             }else{
                 alertWarn.setHeaderText("ta errado");
                 alertWarn.showAndWait();
-            }*/
+            }
         });
 
         primaryStage.setScene(scCeneLogin);

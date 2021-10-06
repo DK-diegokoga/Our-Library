@@ -6,13 +6,13 @@ import java.util.List;
 
 public class LoginDAOImpl implements LoginDAO{
 
-    public static final String URL = "jdbc:mariadb://localhost:3306/LOJA";
+    public static final String URL = "jdbc:mariadb://localhost:3306/bdbiblioteca";
     public static final String USER = "root";
     public static final String PASSWORD = "";
 
     public List<String> validarLogin(Login Lg) {
         try (Connection conLg = DriverManager.getConnection(URL, USER, PASSWORD)) {
-            String sqlLg = "SELECT * FROM funcionario WHERE email LIKE ?";
+            String sqlLg = "SELECT * FROM tbfuncionario WHERE email LIKE ?";
             PreparedStatement stmtLg = conLg.prepareStatement(sqlLg);
             stmtLg.setString(1, Lg.getEmail());
             ResultSet rsLg = stmtLg.executeQuery();

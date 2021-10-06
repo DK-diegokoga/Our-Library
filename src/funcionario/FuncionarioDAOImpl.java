@@ -4,13 +4,13 @@ import java.sql.*;
 
 public class FuncionarioDAOImpl implements FuncionarioDAO{
 
-    public static final String URL = "jdbc:mariadb://localhost:3306/LOJA";
+    public static final String URL = "jdbc:mariadb://localhost:3306/bdbiblioteca";
     public static final String USER = "root";
     public static final String PASSWORD = "";
 
     public void adicionar(Funcionario Fn) {
         try (Connection con = DriverManager.getConnection(URL, USER, PASSWORD)){
-            String sqlADD = "INSERT INTO FUNCIONARIO" +
+            String sqlADD = "INSERT INTO TBFUNCIONARIO" +
                     "(CODIGO, NOME, EMAIL, CONFIRMA_EMAIL, PERMISSAO, SENHA, CONFIRMA_SENHA) VALUES" +
                     "(?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement stmtADD = con.prepareStatement(sqlADD);
@@ -29,7 +29,7 @@ public class FuncionarioDAOImpl implements FuncionarioDAO{
 
     public Funcionario pesquisarPorCodigo(long codigo) {
         try (Connection conPQ = DriverManager.getConnection(URL, USER, PASSWORD)) {
-            String sqlPQ = "SELECT * FROM funcionario WHERE codigo LIKE ?";
+            String sqlPQ = "SELECT * FROM tbfuncionario WHERE codigo LIKE ?";
             PreparedStatement stmtPQ = conPQ.prepareStatement(sqlPQ);
             stmtPQ.setLong(1, codigo);
             ResultSet rs = stmtPQ.executeQuery();
@@ -52,7 +52,7 @@ public class FuncionarioDAOImpl implements FuncionarioDAO{
 
     public void excluir(Funcionario Fn) {
         try (Connection conEX = DriverManager.getConnection(URL, USER, PASSWORD)) {
-            String sqlEX = "DELETE FROM funcionario WHERE codigo LIKE ?";
+            String sqlEX = "DELETE FROM tbfuncionario WHERE codigo LIKE ?";
             PreparedStatement stmtEX = conEX.prepareStatement(sqlEX);
             stmtEX.setLong(1, Fn.getCodigo());
             ResultSet rs = stmtEX.executeQuery();
@@ -63,7 +63,7 @@ public class FuncionarioDAOImpl implements FuncionarioDAO{
 
     public void alterar(Funcionario Fn) {
         try (Connection conAL = DriverManager.getConnection(URL, USER, PASSWORD)) {
-            String sqlAL = "UPDATE FUNCIONARIO SET " +
+            String sqlAL = "UPDATE TBFUNCIONARIO SET " +
                     "NOME = ?, " +
                     "EMAIL = ?, " +
                     "CONFIRMA_EMAIL = ?, " +
@@ -86,7 +86,7 @@ public class FuncionarioDAOImpl implements FuncionarioDAO{
 
     public void admin() {
         try (Connection conAD = DriverManager.getConnection(URL, USER, PASSWORD)) {
-            String sql = "SELECT * FROM funcionario WHERE codigo LIKE ?";
+            String sql = "SELECT * FROM tbfuncionario WHERE codigo LIKE ?";
             PreparedStatement stmt = conAD.prepareStatement(sql);
             stmt.setLong(1, 0);
             ResultSet rs = stmt.executeQuery();
