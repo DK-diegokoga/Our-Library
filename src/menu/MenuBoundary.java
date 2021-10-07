@@ -1,6 +1,6 @@
 package menu;
 
-//import estoque.EstoqueBoundary;
+import estoque.EstoqueBoundary;
 import funcionario.FuncionarioBoundary;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -18,7 +18,7 @@ public class MenuBoundary extends Application {
     private Button btnVenda = new Button("Venda");
 
     private FuncionarioBoundary funcTela = new FuncionarioBoundary();
-    //private EstoqueBoundary estTela = new EstoqueBoundary();
+    private EstoqueBoundary estTela = new EstoqueBoundary();
     //private VendasBoundary vendTela = new VendasBoundary();
 
     @Override
@@ -54,7 +54,7 @@ public class MenuBoundary extends Application {
             Stage stageEst = new Stage();
             try {
                 System.out.println("Apertaram aqui");
-                //estTela.start(stageEst);
+                estTela.start(stageEst);
             } catch (Exception exception) {
                 exception.printStackTrace();
             }
