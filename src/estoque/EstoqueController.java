@@ -25,17 +25,19 @@ public class EstoqueController {
     }
 
     public void colocarValores(){
-        TableColumn<Estoque,Integer> colunaCodigo = new TableColumn<>(" Codigo ");
-        TableColumn<Estoque, String> colunaNome = new TableColumn<>("Nome Produto");
-        TableColumn<Estoque, Double> colunaValor = new TableColumn<>("  Valor R$ ");
-        TableColumn<Estoque,Integer> colunaQuantidade = new TableColumn<>(" Quantidade ");
+        TableColumn<Estoque,Integer> colunaCodigo = new TableColumn<>("ISBN");
+        TableColumn<Estoque, String> colunaTitulo = new TableColumn<>("Titulo");
+        TableColumn<Estoque, String> colunaAutor = new TableColumn<>("Autor");
+        TableColumn<Estoque,Integer> colunaQuantidadeEstoque = new TableColumn<>("Estoque");
+        TableColumn<Estoque,Integer> colunaQuantidadeDisponivel = new TableColumn<>("Disponivel");
 
-        colunaCodigo.setCellValueFactory(new PropertyValueFactory<>("codProduto"));
-        colunaNome.setCellValueFactory(new PropertyValueFactory<>("nomeProduto"));
-        colunaValor.setCellValueFactory(new PropertyValueFactory<>("valor"));
-        colunaQuantidade.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
+        colunaCodigo.setCellValueFactory(new PropertyValueFactory<>("ISBN"));
+        colunaTitulo.setCellValueFactory(new PropertyValueFactory<>("titulo"));
+        colunaAutor.setCellValueFactory(new PropertyValueFactory<>("autor"));
+        colunaQuantidadeEstoque.setCellValueFactory(new PropertyValueFactory<>("quantidadeEstoque"));
+        colunaQuantidadeDisponivel.setCellValueFactory(new PropertyValueFactory<>("quantidadeDisponivel"));
 
-        tableEstoque.getColumns().addAll(colunaCodigo, colunaNome, colunaValor, colunaQuantidade);
+        tableEstoque.getColumns().addAll(colunaCodigo, colunaTitulo, colunaAutor, colunaQuantidadeEstoque,colunaQuantidadeDisponivel);
         tableEstoque.setMinSize(440, 410);
         tableEstoque.setMaxSize(440, 410);
         tableEstoque.setEditable(false);

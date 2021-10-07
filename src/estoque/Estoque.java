@@ -2,40 +2,61 @@ package estoque;
 
 public class Estoque {
 
-    private int codProduto;
-    private String nomeProduto;
-    private double Valor;
-    private int Quantidade;
+    private int ISBN;
+    private String Titulo;
+    private String Autor;
+    private int QuantidadeEstoque;
+    private int QuantidadeDisponivel;
 
-    public int getCodProduto() {
-        return codProduto;
+    public int getISBN() {
+        return ISBN;
     }
 
-    public void setCodProduto(int codProduto) {
-        this.codProduto = codProduto;
+    public void setISBN(int ISBN) {
+        this.ISBN = ISBN;
     }
 
-    public String getNomeProduto() {
-        return nomeProduto;
+    public String getTitulo() {
+        return Titulo;
     }
 
-    public void setNomeProduto(String nomeProduto) {
-        this.nomeProduto = nomeProduto;
+    public void setTitulo(String titulo) {
+        Titulo = titulo;
     }
 
-    public double getValor() {
-        return Valor;
+    public String getAutor() {
+        return Autor;
     }
 
-    public void setValor(double valor) {
-        Valor = valor;
+    public void setAutor(String autor) {
+        Autor = autor;
     }
 
-    public int getQuantidade() {
-        return Quantidade;
+    public int getQuantidadeEstoque() {
+        return QuantidadeEstoque;
     }
 
-    public void setQuantidade(int quantidade) {
-        Quantidade = quantidade;
+    public void setQuantidadeEstoque(int quantidadeEstoque) {
+        QuantidadeEstoque = quantidadeEstoque;
+    }
+
+    public int getQuantidadeDisponivel() {
+        return QuantidadeDisponivel;
+    }
+
+    public void setQuantidadeDisponivel(int quantidadeDisponivel) {
+        QuantidadeDisponivel = quantidadeDisponivel;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Estoque{" +
+                "ISBN=" + ISBN +
+                ", Titulo='" + Titulo + '\'' +
+                ", Autor='" + Autor + '\'' +
+                ", QuantidadeEstoque=" + QuantidadeEstoque +
+                ", QuantidadeDisponivel=" + QuantidadeDisponivel +
+                '}';
     }
 }

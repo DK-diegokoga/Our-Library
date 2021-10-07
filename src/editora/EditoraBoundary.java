@@ -170,7 +170,7 @@ public class EditoraBoundary extends Application {
             txtCodigo.setText(String.valueOf(Ed.getCODIGO_EDITORA()));
             txtNome.setText(Ed.getNOME_EDITORA());
         } else {
-            alertMess.setHeaderText("MARCA NÃO EXISTE.");
+            alertMess.setHeaderText("EDITORA NÃO EXISTE.");
             alertMess.showAndWait();
         }
     }
