@@ -80,7 +80,6 @@ public class MenuBoundary extends Application {
     public void menuComum(String nvnperm){
         if (nvnperm.contains("COMUM")){
             btnFuncionario.setVisible(false);
-            btnAluno.setVisible(false);
         }
     }
 }
