@@ -1,4 +1,4 @@
- package login;
+package login;
 import funcionario.FuncionarioController;
 import javafx.application.Application;
 import javafx.beans.value.ObservableValue;
@@ -13,7 +13,7 @@ import menu.MenuBoundary;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
- public class LoginBoundary extends Application {
+public class LoginBoundary extends Application {
 
     private TextField password = new TextField();
     private TextField txtEmail = new TextField();

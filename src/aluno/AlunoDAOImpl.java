@@ -1,48 +1,48 @@
-package funcionario;
+package aluno;
 
 import java.sql.*;
 
-public class FuncionarioDAOImpl implements FuncionarioDAO{
+public class AlunoDAOImpl implements AlunoDAO {
 
     public static final String URL = "jdbc:mariadb://localhost:3306/bdbiblioteca";
     public static final String USER = "root";
     public static final String PASSWORD = "";
 
-    public void adicionar(Funcionario Fn) {
+    public void adicionar(Aluno Al) {
         try (Connection con = DriverManager.getConnection(URL, USER, PASSWORD)){
-            String sqlADD = "INSERT INTO TBFUNCIONARIO" +
-                    "(CODIGO, NOME, EMAIL, CONFIRMA_EMAIL, PERMISSAO, SENHA, CONFIRMA_SENHA) VALUES" +
+            String sqlADD = "INSERT INTO TBALUNO" +
+                    "(RA, NOME, EMAIL, CELULAR, SITUACAO, PENALIDADE, DESCRICAO) VALUES" +
                     "(?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement stmtADD = con.prepareStatement(sqlADD);
-            stmtADD.setLong(1, Fn.getCodigo());
-            stmtADD.setString(2, Fn.getNome());
-            stmtADD.setString(3, Fn.getEmail());
-            stmtADD.setString(4, Fn.getConfEmail());
-            stmtADD.setString(5, Fn.getPermissao());
-            stmtADD.setString(6, Fn.getSenha());
-            stmtADD.setString(7, Fn.getConfSenha());
+            stmtADD.setLong(1, Al.getRA());
+            stmtADD.setString(2, Al.getNome());
+            stmtADD.setString(3, Al.getEmail());
+            stmtADD.setLong(4, Al.getCelular());
+            stmtADD.setString(5, Al.getSituacao());
+            stmtADD.setString(6, Al.getPenalidade());
+            stmtADD.setString(7, Al.getDescricao());
             stmtADD.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
     }
 
-    public Funcionario pesquisarPorCodigo(long codigo) {
+    public Aluno pesquisarPorCodigo(long RA) {
         try (Connection conPQ = DriverManager.getConnection(URL, USER, PASSWORD)) {
-            String sqlPQ = "SELECT * FROM tbfuncionario WHERE codigo LIKE ?";
+            String sqlPQ = "SELECT * FROM tbaluno WHERE RA LIKE ?";
             PreparedStatement stmtPQ = conPQ.prepareStatement(sqlPQ);
-            stmtPQ.setLong(1, codigo);
+            stmtPQ.setLong(1, RA);
             ResultSet rs = stmtPQ.executeQuery();
             while (rs.next()) {
-                Funcionario Fn = new Funcionario();
-                Fn.setCodigo(rs.getLong("codigo"));
-                Fn.setNome(rs.getString("nome"));
-                Fn.setEmail(rs.getString("email"));
-                Fn.setConfEmail(rs.getString("confirma_email"));
-                Fn.setPermissao(rs.getString("permissao"));
-                Fn.setSenha(rs.getString("senha"));
-                Fn.setConfSenha(rs.getString("confirma_senha"));
-                return Fn;
+                Aluno Al = new Aluno();
+                Al.setRA(rs.getLong("RA"));
+                Al.setNome(rs.getString("nome"));
+                Al.setEmail(rs.getString("email"));
+                Al.setCelular(rs.getLong("celular"));
+                Al.setSituacao(rs.getString("situacao"));
+                Al.setPenalidade(rs.getString("penalidade"));
+                Al.setDescricao(rs.getString("descricao"));
+                return Al;
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -50,48 +50,48 @@ public class FuncionarioDAOImpl implements FuncionarioDAO{
         return null;
     }
 
-    public void excluir(Funcionario Fn) {
+    public void excluir(Aluno Al) {
         try (Connection conEX = DriverManager.getConnection(URL, USER, PASSWORD)) {
-            String sqlEX = "DELETE FROM tbfuncionario WHERE codigo LIKE ?";
+            String sqlEX = "DELETE FROM tbaluno WHERE RA LIKE ?";
             PreparedStatement stmtEX = conEX.prepareStatement(sqlEX);
-            stmtEX.setLong(1, Fn.getCodigo());
+            stmtEX.setLong(1, Al.getRA());
             ResultSet rs = stmtEX.executeQuery();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public void alterar(Funcionario Fn) {
+    public void alterar(Aluno Al) {
         try (Connection conAL = DriverManager.getConnection(URL, USER, PASSWORD)) {
-            String sqlAL = "UPDATE TBFUNCIONARIO SET " +
+            String sqlAL = "UPDATE TBALUNO SET " +
                     "NOME = ?, " +
                     "EMAIL = ?, " +
-                    "CONFIRMA_EMAIL = ?, " +
-                    "PERMISSAO = ?, " +
-                    "SENHA = ?, " +
-                    "CONFIRMA_SENHA = ? where codigo = ?";
+                    "CELULAR = ?, " +
+                    "SITUACAO = ?, " +
+                    "PENALIDADE = ?," +
+                    "DESCRICAO = ? where RA = ?";
             PreparedStatement stmtAL = conAL.prepareStatement(sqlAL);
-            stmtAL.setString(1, Fn.getNome());
-            stmtAL.setString(2, Fn.getEmail());
-            stmtAL.setString(3, Fn.getConfEmail());
-            stmtAL.setString(4, Fn.getPermissao());
-            stmtAL.setString(5, Fn.getSenha());
-            stmtAL.setString(6, Fn.getConfSenha());
-            stmtAL.setLong(7, Fn.getCodigo());
+            stmtAL.setString(1, Al.getNome());
+            stmtAL.setString(2, Al.getEmail());
+            stmtAL.setLong(3, Al.getCelular());
+            stmtAL.setString(4, Al.getSituacao());
+            stmtAL.setString(5, Al.getPenalidade());
+            stmtAL.setString(6, Al.getDescricao());
+            stmtAL.setLong(7, Al.getRA());
             int rs = stmtAL.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public void admin() {
+    /*public void admin() {
         try (Connection conAD = DriverManager.getConnection(URL, USER, PASSWORD)) {
             String sql = "SELECT * FROM tbfuncionario WHERE codigo LIKE ?";
             PreparedStatement stmt = conAD.prepareStatement(sql);
             stmt.setLong(1, 0);
             ResultSet rs = stmt.executeQuery();
             if (!rs.first()) {
-                Funcionario Fn = new Funcionario();
+                Aluno Fn = new Aluno();
                 Fn.setNome("ADMIN");
                 Fn.setEmail("ADMIN@ADMIIN.COM");
                 Fn.setConfEmail("ADMIN@ADMIIN.COM");
@@ -104,5 +104,5 @@ public class FuncionarioDAOImpl implements FuncionarioDAO{
         } catch (SQLException e) {
 
         }
-    }
+    }*/
 }
