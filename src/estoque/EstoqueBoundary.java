@@ -12,6 +12,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import editora.EditoraBoundary;
+import livro.Livro;
+import livro.LivroBoundary;
 //import produto.Produto;
 //import produto.ProdutoBoundary;
 //import tamanho.TamanhoBoundary;
@@ -35,7 +37,7 @@ public class EstoqueBoundary extends Application {
 
     private EditoraBoundary editoraTela = new EditoraBoundary();
     private Alert alertWarn = new Alert(Alert.AlertType.WARNING);
-    //ProdutoBoundary produtoTela = new ProdutoBoundary();
+    LivroBoundary livroTela = new LivroBoundary();
 
     public int cod;
 
@@ -114,9 +116,9 @@ public class EstoqueBoundary extends Application {
             Stage stageLivro = new Stage();
             try {
                 System.out.println("Apertou aqui");
-                //livroTela.start(stageLivro);
-                //livroTela.entityToBoundary(new Livro());
-                //stage.close();
+                livroTela.start(stageLivro);
+                livroTela.entityToBoundary(new Livro());
+                stage.close();
             } catch (Exception exception) {
                 exception.printStackTrace();
             }
@@ -127,8 +129,8 @@ public class EstoqueBoundary extends Application {
             try {
                 cod = Integer.parseInt(txtBusca.getText());
                 System.out.println("Apertou aqui");
-                //produtoTela.start(stageProdutoPesq);
-                //produtoTela.pesquisar(cod);
+                livroTela.start(stageProdutoPesq);
+                livroTela.pesquisar(cod);
                 stage.close();
             } catch (Exception exception) {
                 alertWarn.setHeaderText("Não Existe");
