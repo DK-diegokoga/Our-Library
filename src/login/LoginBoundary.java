@@ -19,7 +19,7 @@ public class LoginBoundary extends Application {
     private TextField txtEmail = new TextField();
     private PasswordField txtSenha = new PasswordField();
 
-    private CheckBox check = new CheckBox("Mostrar Senha");
+    private CheckBox check = new CheckBox();
 
     private Button btnEntrar = new Button("Entrar");
 
@@ -46,20 +46,22 @@ public class LoginBoundary extends Application {
 
         Label lblEmail = new Label("Email:");
         Label lblSenha = new Label("Senha:");
+        Label lblChek = new Label("Mostrar Senha");
 
         Image img = new Image(new FileInputStream("img/logopd3.png"));
         ImageView imgLogo = new ImageView(img);
-        imgLogo.relocate(-25, 15);
-        imgLogo.setFitHeight ( 300 );
-        imgLogo.setFitWidth ( 250 );
+        imgLogo.relocate(-15, 15);
+        imgLogo.setFitHeight ( 320 );
+        imgLogo.setFitWidth ( 300 );
 
-        lblEmail.relocate(240, 90);
-        txtEmail.relocate(240, 110);
+        lblEmail.relocate(240, 50);
+        txtEmail.relocate(240, 70);
 
-        lblSenha.relocate(240, 150);
-        txtSenha.relocate(240, 170);
+        lblSenha.relocate(240, 110);
+        txtSenha.relocate(240, 130);
 
-        check.relocate(245,200);
+        lblChek.relocate(340,160);
+        check.relocate(443,160);
         check.selectedProperty().addListener((ObservableValue<? extends Boolean> ov, Boolean old_val, Boolean new_val)->{
             if(check.isSelected()){
                 password.setText(txtSenha.getText());
@@ -72,11 +74,11 @@ public class LoginBoundary extends Application {
             password.setVisible(false);
         });
         password.setVisible(false);
-        password.relocate(240,170);
+        password.relocate(240,130);
 
-        btnEntrar.relocate(325, 250);
+        btnEntrar.relocate(325, 230);
 
-        pPane.getChildren().addAll(lblEmail, txtEmail, btnEntrar, lblSenha, txtSenha, imgLogo, check, password);
+        pPane.getChildren().addAll(imgLogo, lblEmail, txtEmail, btnEntrar, lblSenha, txtSenha, check, lblChek, password);
 
 
         btnEntrar.setOnAction((e) -> {
