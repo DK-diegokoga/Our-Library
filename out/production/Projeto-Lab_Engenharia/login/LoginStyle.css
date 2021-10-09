@@ -1,14 +1,14 @@
 .text-field{
     -fx-min-width: 220;
     -fx-faint-focus-color: transparent;
-    -fx-focus-color: rgb(251, 156, 88);
+    -fx-focus-color: rgb(120, 139, 153);
 }
 .check-box{
     -fx-faint-focus-color: transparent;
-    -fx-focus-color: rgb(255, 140, 5);
+    -fx-focus-color: rgb(120, 139, 153);
 }
 .label{
-    -fx-text-fill: rgb(244,92,3);
+    -fx-text-fill: rgb(120, 139, 153);
     -fx-font-size: 15;
-    -fx-font-family: "Felix Titling";
+    -fx-font-family: "Arial";
 }
