@@ -12,3 +12,7 @@
     -fx-font-size: 15;
     -fx-font-family: "Arial";
 }
+
+.fundo{
+    -fx-background-color: white;
+}
