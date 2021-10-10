@@ -51,6 +51,7 @@ public class LivroBoundary extends Application {
         BorderPane border = new BorderPane();
         HBox hbox = addBox();
         border.setTop(hbox);
+        border.getStyleClass().add("fundo");
         border.getStylesheets().add(EditoraBoundary.class.getResource("StyleText.css").toExternalForm());
         btnAdicionar.setVisible(true);
         txtTitulo.setEditable(true);

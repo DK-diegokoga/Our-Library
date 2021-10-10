@@ -32,6 +32,7 @@ public class EditoraBoundary extends Application {
     @Override
     public void start(Stage Stage) throws Exception {
         Pane pPane = new Pane();
+        pPane.getStyleClass().add("fundo");
         pPane.getStylesheets().add(EditoraBoundary.class.getResource("StyleText.css").toExternalForm());
         Scene scCeneEditora = new Scene(pPane, 400, 250);
         EditoraController.valida(txtCodigo,txtPesquisar);

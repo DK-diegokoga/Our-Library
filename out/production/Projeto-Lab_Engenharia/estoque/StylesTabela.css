@@ -1,5 +1,5 @@
 .table-row-cell:selected{
-    -fx-background-color:rgb(251, 156, 88) ;
+    -fx-background-color: rgb(120, 139, 153);
 }
 
 .label{

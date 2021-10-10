@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import login.LoginBoundary;
 
 
 public class MenuBoundary extends Application {
@@ -27,8 +28,9 @@ public class MenuBoundary extends Application {
         BorderPane borderPaine = new BorderPane();
         GridPane painel = new GridPane();
         Scene scene = new Scene(borderPaine, 500,330);
-
+        painel.getStyleClass().add("fundo");
         painel.getStylesheets().add(MenuBoundary.class.getResource("StylesMenu.css").toExternalForm());
+        //painel.getStylesheets().add(MenuBoundary.class.getResource("StylesMenu.css").toExternalForm());
 
         borderPaine.getChildren().add(painel);
         painel.add(btnEstoque, 0,1);

@@ -1,7 +1,7 @@
 .text-field{
     -fx-min-width: 220;
     -fx-faint-focus-color: transparent;
-    -fx-focus-color: rgb(251, 156, 88);
+    -fx-focus-color: rgb(120, 139, 153);
 }
 .label{
     -fx-font-size: 10;

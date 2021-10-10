@@ -44,6 +44,7 @@ public class FuncionarioBoundary extends Application {
     public void start(Stage stage) throws Exception {
         Pane pPane = new Pane();
         Scene scCeneFuncionario = new Scene(pPane, 500, 330);
+        pPane.getStyleClass().add("fundo");
         pPane.getStylesheets().add(FuncionarioBoundary.class.getResource("btnExcluirStyle.css").toExternalForm());
         FuncionarioController.valida(txtCodigo);
         cbPermissao.getItems().addAll(perm);

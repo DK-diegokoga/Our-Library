@@ -44,6 +44,7 @@ public class AlunoBoundary extends Application {
     public void start(Stage stage) throws Exception {
         Pane pPane = new Pane();
         Scene scCeneAluno = new Scene(pPane, 500, 330);
+        pPane.getStyleClass().add("fundo");
         pPane.getStylesheets().add(AlunoBoundary.class.getResource("btnExcluirStyle.css").toExternalForm());
         AlunoController.valida(txtRA);
         cbSituacao.getItems().addAll(situacao);
