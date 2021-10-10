@@ -2,10 +2,13 @@
     -fx-min-width: 500;
     -fx-min-height: 100;
     -fx-faint-focus-color: transparent;
-    -fx-focus-color: rgb(251, 156, 88);
+    -fx-focus-color: rgb(120, 139, 153);
 }
 .button{
     -fx-border-color: #750202;
     -fx-border-radius: 5;
     -fx-background-color: #ef6060;
+}
+.fundo{
+    -fx-background-color: white;
 }
