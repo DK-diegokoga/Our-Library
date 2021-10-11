@@ -11,11 +11,17 @@
     -fx-control-inner-background: #e8e8ee;
     -fx-background-color: #d9dbe0;
     -fx-font-size: 12;
+
     -fx-table-cell-border-color: transparent;
     -fx-table-header-border-color: transparent;
     -fx-padding: 1;
 }
 
+.table-view .label{
+     -fx-text-fill: #eeeded;
+}
+
 .table-view .table-cell{
-     -fx-text-fill: #5591ca;
+     -fx-text-fill: #5591ca;/*Cor do texto das celulas*/
+     -fx-alignment: CENTER_LEFT;/*Alinhamento do texto do cabeçalho*/
 }
