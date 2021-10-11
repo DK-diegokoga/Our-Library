@@ -16,6 +16,10 @@
     -fx-padding: 1;
 }
 
+.table-view .label{
+     -fx-text-fill: #eeeded;
+}
+
 .table-view .table-cell{
      -fx-text-fill: #5591ca;
 }

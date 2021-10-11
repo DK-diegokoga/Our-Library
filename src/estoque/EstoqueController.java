@@ -37,7 +37,9 @@ public class EstoqueController {
         colunaQuantidadeEstoque.setCellValueFactory(new PropertyValueFactory<>("quantidadeEstoque"));
         colunaQuantidadeDisponivel.setCellValueFactory(new PropertyValueFactory<>("quantidadeDisponivel"));
 
-        tableEstoque.getColumns().addAll(colunaCodigo, colunaTitulo, colunaAutor, colunaQuantidadeEstoque,colunaQuantidadeDisponivel);
+        if (tableEstoque.getItems().isEmpty()) {
+            tableEstoque.getColumns().addAll(colunaCodigo, colunaTitulo, colunaAutor, colunaQuantidadeEstoque, colunaQuantidadeDisponivel);
+        }
         tableEstoque.setMinSize(560, 300);
         tableEstoque.setMaxSize(560, 300);
         tableEstoque.setEditable(false);
