@@ -16,7 +16,7 @@ public class MenuBoundary extends Application {
 
     private Button btnEstoque = new Button("Estoque");
     private Button btnFuncionario = new Button("Gerenciar \n" + "Funcionario");
-    private Button btnCaixa = new Button("Caixa");
+    private Button btnEmprestimo = new Button("Emprestimo");
     private Button btnAluno = new Button("Gerenciar \n" + "Aluno");
 
     private FuncionarioBoundary funcTela = new FuncionarioBoundary();
@@ -36,8 +36,8 @@ public class MenuBoundary extends Application {
         painel.add(btnEstoque, 0,1);
         painel.add(btnFuncionario,1,1);
         painel.add(btnAluno,0,2);
-        painel.add(btnCaixa,1,2);
-        btnCaixa.setDisable(true);
+        painel.add(btnEmprestimo,1,2);
+        btnEmprestimo.setDisable(true);
         painel.setVgap(30);
         painel.setHgap(50);
         painel.setTranslateX(125);
