@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import editora.Editora;
 import editora.EditoraBoundary;
 import editora.EditoraController;
+import org.mariadb.jdbc.internal.com.read.dao.Results;
 
 
 public class LivroBoundary extends Application {
@@ -214,7 +215,7 @@ public class LivroBoundary extends Application {
         cbEditora.getItems().addAll(livroCont.carregarEditora());
     }
 
-    public void pesquisar(int cod){
+    public void pesquisar(int cod, Stage ss){
         txtTitulo.setEditable(false);
         txtISBN.setEditable(false);
         txtAutor.setEditable(false);
@@ -227,6 +228,8 @@ public class LivroBoundary extends Application {
         if(entityToBoundary(livroCont.pesquisarPorCodigo(cod))){
             btnAlterar.setVisible(true);
             btnExcluir.setVisible(true);
+        }else{
+            ss.close();
         }
     }
 }

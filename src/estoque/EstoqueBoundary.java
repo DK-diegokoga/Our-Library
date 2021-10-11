@@ -131,7 +131,7 @@ public class EstoqueBoundary extends Application {
                 cod = Integer.parseInt(txtBusca.getText());
                 System.out.println("Apertou aqui");
                 livroTela.start(stageProdutoPesq);
-                livroTela.pesquisar(cod);
+                livroTela.pesquisar(cod, stageProdutoPesq);
                 stage.close();
                 txtBusca.clear();
             } catch (Exception exception) {
