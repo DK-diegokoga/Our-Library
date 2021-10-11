@@ -38,8 +38,8 @@ public class EstoqueController {
         colunaQuantidadeDisponivel.setCellValueFactory(new PropertyValueFactory<>("quantidadeDisponivel"));
 
         tableEstoque.getColumns().addAll(colunaCodigo, colunaTitulo, colunaAutor, colunaQuantidadeEstoque,colunaQuantidadeDisponivel);
-        tableEstoque.setMinSize(440, 410);
-        tableEstoque.setMaxSize(440, 410);
+        tableEstoque.setMinSize(560, 300);
+        tableEstoque.setMaxSize(560, 300);
         tableEstoque.setEditable(false);
         tableEstoque.getItems().clear();
         tableEstoque.getStylesheets().add(EstoqueController.class.getResource("StylesTabela.css").toExternalForm());

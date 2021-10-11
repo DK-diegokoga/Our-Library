@@ -1,11 +1,14 @@
 .text-field{
-    -fx-min-width: 300;
+    -fx-min-width: 340;
     -fx-faint-focus-color: transparent;
     -fx-focus-color: rgb(120, 139, 153);
 }
 
-
-.label{
+.lblInfo{
     -fx-font-size: 10;
-    -fx-text-fill: rgb(151, 34, 17);
+    -fx-text-fill: rgb(60, 107, 138);
+}
+
+.fundo{
+    -fx-background-color: white;
 }

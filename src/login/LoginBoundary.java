@@ -43,7 +43,6 @@ public class LoginBoundary extends Application {
         pPane.getStyleClass().add("fundo");
         pPane.getStylesheets().add(LoginBoundary.class.getResource("LoginStyle.css").toExternalForm());
         Scene scCeneLogin = new Scene(pPane, 500, 330);
-    //    scCeneLogin.getStylesheets().add(LoginBoundary.class.getResource("LoginStyle.css").toExternalForm());
 
         adm.admin();
 

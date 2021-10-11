@@ -31,7 +31,7 @@ public class EstoqueBoundary extends Application {
     private String cssLayout =  "-fx-border-color: gray;\n" +
             "-fx-border-insets: 3;\n" +
             "-fx-border-width: 1;\n" ;
-    private String cssBorda =  "-fx-border-color: green;\n" +
+    private String cssBorda =  "-fx-border-color: rgb(60, 107, 138);\n" +
             "-fx-border-insets: 3;\n" +
             "-fx-border-width: 2;\n" ;
 
@@ -43,7 +43,7 @@ public class EstoqueBoundary extends Application {
 
     private HBox addBox() {
         HBox hbox = new HBox();
-        hbox.setPadding(new Insets(30, 20, 20, 20));
+        hbox.setPadding(new Insets(30, 20, 20, 30));
         hbox.setSpacing(20);
         hbox.getChildren().addAll(lblInfo,txtBusca, btnPesquisar);
         lblInfo.getStylesheets().add(EstoqueBoundary.class.getResource("StylesEstoque.css").toExternalForm());
@@ -92,15 +92,16 @@ public class EstoqueBoundary extends Application {
         control.colocarValores();
         control.Tabela();
         borderPane.setCenter(control.getTable());
+        lblInfo.getStyleClass().add("lblInfo");
 
         VBox vbox = addVbox();
         vbox.setAlignment(Pos.CENTER);
         BorderPane pane2 = new BorderPane();
         pane2.setTop(vbox);
         borderPane.setRight(pane2);
-
-        Scene scCeneEstoque = new Scene(borderPane, 650, 400);
-        btnAdicionar.getStylesheets().add(EstoqueBoundary.class.getResource("StylesEstoque.css").toExternalForm());
+        borderPane.getStyleClass().add("fundo");
+        Scene scCeneEstoque = new Scene(borderPane, 780, 400);
+        borderPane.getStylesheets().add(EstoqueBoundary.class.getResource("StylesEstoque.css").toExternalForm());
 
         btnEditora.setOnAction((event -> {
             Stage stageEditora = new Stage();
