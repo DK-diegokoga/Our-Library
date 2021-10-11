@@ -73,19 +73,19 @@ public class AlunoBoundary extends Application {
         txtCelular.relocate(250, 100);
         txtCelular.getStylesheets().add(AlunoBoundary.class.getResource("Style.css").toExternalForm());
 
-        lblRA.relocate(20, 153);
-        txtRA.relocate(70, 150);
+        lblRA.relocate(10, 153);
+        txtRA.relocate(80, 150);
 
         lblTextoPesq.relocate(70, 180);
         lblTextoPesq.getStylesheets().add(AlunoBoundary.class.getResource("Style.css").toExternalForm());
 
-        lblPenalidade.relocate(20, 223);
-        txtPenalidade.relocate(70, 220);
+        lblPenalidade.relocate(10, 223);
+        txtPenalidade.relocate(80, 220);
 
-        lblDescricao.relocate(230, 223);
+        lblDescricao.relocate(250, 223);
         txtDescricao.relocate(340, 220);
 
-        lblSituacao.relocate(230, 153);
+        lblSituacao.relocate(250, 153);
         cbSituacao.relocate(340, 150);
 
         lblImg.relocate(23, 40);
