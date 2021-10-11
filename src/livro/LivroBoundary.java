@@ -20,6 +20,7 @@ public class LivroBoundary extends Application {
     private ComboBox<String> cbEditora = new ComboBox<>();
 
     private TextField txtQuantidade = new TextField();
+    private TextField txtDisponivel = new TextField();
 
 
     private Button btnAdicionar = new Button("Adicionar");
@@ -58,6 +59,7 @@ public class LivroBoundary extends Application {
         txtISBN.setEditable(true);
         txtAutor.setEditable(true);
         txtQuantidade.setEditable(true);
+        txtDisponivel.setEditable(true);
 
         cbEditora.setDisable(false);
         btnConcluir.setVisible(false);
@@ -68,7 +70,7 @@ public class LivroBoundary extends Application {
 
         BorderPane bP = new BorderPane();
         GridPane gridPane = new GridPane();
-        Scene scene = new Scene(border, 700, 450);
+        Scene scene = new Scene(border, 550, 300);
         gridPane.setVgap(20);
         gridPane.setHgap(5);
         bP.setCenter(gridPane);
@@ -80,19 +82,21 @@ public class LivroBoundary extends Application {
         Label lblEditora = new Label("Editora:");
 
         Label lblQuantidade = new Label("Quantidade em Estoque:");
+        Label lblDisponivel = new Label("Quantidade Disponivel:");
 
 
         gridPane.add(lblNome,0,1);
         gridPane.add(txtTitulo,1,1);
-        gridPane.add(lblCodigo,0,2);
-        gridPane.add(txtISBN,1,2);
-        gridPane.add(lblAutor,2,2);
-        gridPane.add(txtAutor,3,2);
-        gridPane.add(lblEditora,0,3);
-        gridPane.add(cbEditora,1,3);
-        gridPane.add(lblQuantidade,2,5);
-        gridPane.add(txtQuantidade,3,5);
-
+        gridPane.add(lblCodigo,2,1);
+        gridPane.add(txtISBN,3,1);
+        gridPane.add(lblAutor,0,2);
+        gridPane.add(txtAutor,1,2);
+        gridPane.add(lblEditora,2,2);
+        gridPane.add(cbEditora,3,2);
+        gridPane.add(lblQuantidade,0,3);
+        gridPane.add(txtQuantidade,1,3);
+        gridPane.add(lblDisponivel,0,4);
+        gridPane.add(txtDisponivel,1,4);
 
 
         BorderPane pane = new BorderPane();
@@ -137,7 +141,7 @@ public class LivroBoundary extends Application {
             txtAutor.setEditable(true);
 
             txtQuantidade.setEditable(true);
-
+            txtDisponivel.setEditable(true);
             cbEditora.setDisable(false);
 
             btnExcluir.setVisible(false);
@@ -170,7 +174,7 @@ public class LivroBoundary extends Application {
         try {
             Lv.setISBN(Integer.parseInt(txtISBN.getText()));
             Lv.setQUANTIDADE_ESTOQUE(Integer.parseInt(txtQuantidade.getText()));
-
+            Lv.setQUANTIDADE_DISPONIVEL(Integer.parseInt(txtDisponivel.getText()));
             Lv.setEDITORA(livroCont.buscarPorNomeEditora(cbEditoraValue));
         }catch (Exception e){
 
@@ -188,7 +192,7 @@ public class LivroBoundary extends Application {
 
                 txtAutor.setText(Lv.getAUTOR());
                 txtQuantidade.setText(String.valueOf(Lv.getQUANTIDADE_ESTOQUE()));
-
+                txtDisponivel.setText(String.valueOf(Lv.getQUANTIDADE_DISPONIVEL()));
 
                 ed = edControl.pesquisarPorCodigo(Lv.getEDITORA());
                 cbEditora.setValue(ed.getNOME_EDITORA());
@@ -216,7 +220,7 @@ public class LivroBoundary extends Application {
         txtAutor.setEditable(false);
 
         txtQuantidade.setEditable(false);
-
+        txtDisponivel.setEditable(false);
         cbEditora.setDisable(true);
         btnConcluir.setVisible(false);
         btnAdicionar.setVisible(false);

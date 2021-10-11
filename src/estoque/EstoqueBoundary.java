@@ -133,6 +133,7 @@ public class EstoqueBoundary extends Application {
                 livroTela.start(stageProdutoPesq);
                 livroTela.pesquisar(cod);
                 stage.close();
+                txtBusca.clear();
             } catch (Exception exception) {
                 alertWarn.setHeaderText("Não Existe");
                 alertWarn.showAndWait();
