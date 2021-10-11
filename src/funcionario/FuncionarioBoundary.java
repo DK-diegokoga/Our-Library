@@ -47,7 +47,10 @@ public class FuncionarioBoundary extends Application {
         pPane.getStyleClass().add("fundo");
         pPane.getStylesheets().add(FuncionarioBoundary.class.getResource("btnExcluirStyle.css").toExternalForm());
         FuncionarioController.valida(txtCodigo);
-        cbPermissao.getItems().addAll(perm);
+        if (cbPermissao.getItems().isEmpty()){
+            cbPermissao.getItems().addAll(perm);
+        }
+
 
         Label lblCodigo = new Label("Codigo:");
         Label lblEmail = new Label("Email:");

@@ -47,7 +47,10 @@ public class AlunoBoundary extends Application {
         pPane.getStyleClass().add("fundo");
         pPane.getStylesheets().add(AlunoBoundary.class.getResource("btnExcluirStyle.css").toExternalForm());
         AlunoController.valida(txtRA);
-        cbSituacao.getItems().addAll(situacao);
+        if (cbSituacao.getItems().isEmpty()){
+            cbSituacao.getItems().addAll(situacao);
+        }
+
 
         Label lblRA = new Label("RA:");
         Label lblNome = new Label("Nome:");
@@ -284,6 +287,7 @@ public class AlunoBoundary extends Application {
             txtPenalidade.setText(Al.getPenalidade());
             txtDescricao.setText(Al.getDescricao());
             cbSituacao.setValue(Al.getSituacao());
+
         } else {
             alertMess.setHeaderText("ALUNO NÃO EXISTE.");
             alertMess.showAndWait();
