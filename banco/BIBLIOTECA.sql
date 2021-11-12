@@ -70,7 +70,7 @@ INSERT INTO tbALUNO VALUES(
       1111111111111,
       'JAPA',
       'JAPA',
-      11970707070,
+      11949176476,
       'Regular',
       'Nenhuma',
       'Nenhuma'
