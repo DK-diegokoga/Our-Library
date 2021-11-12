@@ -1,6 +1,7 @@
 package menu;
 
 import aluno.AlunoBoundary;
+import emprestimo.EmprestimoBoundary;
 import estoque.EstoqueBoundary;
 import funcionario.FuncionarioBoundary;
 import javafx.application.Application;
@@ -22,6 +23,7 @@ public class MenuBoundary extends Application {
     private FuncionarioBoundary funcTela = new FuncionarioBoundary();
     private EstoqueBoundary estTela = new EstoqueBoundary();
     private AlunoBoundary alunoTela = new AlunoBoundary();
+    private EmprestimoBoundary emprestimoTela = new EmprestimoBoundary();
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -37,7 +39,7 @@ public class MenuBoundary extends Application {
         painel.add(btnFuncionario,1,1);
         painel.add(btnAluno,0,2);
         painel.add(btnEmprestimo,1,2);
-        btnEmprestimo.setDisable(true);
+        //btnEmprestimo.setDisable(true);
         painel.setVgap(30);
         painel.setHgap(50);
         painel.setTranslateX(125);
@@ -68,6 +70,16 @@ public class MenuBoundary extends Application {
             try {
 
                 alunoTela.start(stageAluno);
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+        }));
+
+        btnEmprestimo.setOnAction((event -> {
+            Stage stageEmprestimo = new Stage();
+            try {
+
+                emprestimoTela.start(stageEmprestimo);
             } catch (Exception exception) {
                 exception.printStackTrace();
             }
