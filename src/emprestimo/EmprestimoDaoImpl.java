@@ -29,4 +29,29 @@ public class EmprestimoDaoImpl implements EmprestimoDao{
         }
         return null;
     }
+
+    public Emprestimo pesquisarPorCodigoEMPRESTIMO(long CODIGO) {
+        try (Connection conPQ = DriverManager.getConnection(URL, USER, PASSWORD)) {
+            String sqlPQ = "SELECT * FROM tbEMPRESTIMO WHERE CODIGO_EMPRESTIMO LIKE ?";
+            PreparedStatement stmtPQ = conPQ.prepareStatement(sqlPQ);
+            stmtPQ.setLong(1, CODIGO);
+            ResultSet rs = stmtPQ.executeQuery();
+            while (rs.next()) {
+                Emprestimo Al = new Emprestimo();
+                Al.setRA(rs.getLong("RA_ALUNO"));
+                Al.setNome(rs.getString("nome_ALUNO"));
+                Al.setCelular(rs.getLong("celular_ALUNO"));
+                Al.setSituacao(rs.getString("situacao_emprestimo"));
+
+                Al.setDataEmprestimo(rs.getString("data_emprestimo"));
+                Al.setISBN(rs.getInt("CODIGO_LIVRO"));
+                Al.setDataEntrega(rs.getString("data_entrega"));
+                Al.setTitulo(rs.getString("titulo_LIVRO"));
+                return Al;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

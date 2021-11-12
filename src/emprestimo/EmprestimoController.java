@@ -87,4 +87,9 @@ public class EmprestimoController {
 
         return empDao.pesquisarPorCodigo(codigo);
     }
+
+    public Emprestimo pesquisarPorCodigoEMPRESTIMO(long codigo) {
+
+        return empDao.pesquisarPorCodigoEMPRESTIMO(codigo);
+    }
 }

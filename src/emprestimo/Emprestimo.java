@@ -6,6 +6,7 @@ public class Emprestimo {
     private long RA;
     private long Celular;
     private String DataEmprestimo;
+    private String DataEntrega;
     private String Situacao;
 
     private int ISBN;
@@ -40,6 +41,14 @@ public class Emprestimo {
     }
 
     public void setDataEmprestimo(String dataEmprestimo) {
+        DataEmprestimo = dataEmprestimo;
+    }
+
+    public String getDataEntrega() {
+        return DataEmprestimo;
+    }
+
+    public void setDataEntrega(String dataEmprestimo) {
         DataEmprestimo = dataEmprestimo;
     }
 

@@ -199,6 +199,8 @@ public class EmprestimoBoundary extends Application {
                     txtCodEmprestimo.setDisable(true);
                     btnPesq.setVisible(false);
                     btnAdd.setVisible(false);
+                    Emprestimo Al = control.pesquisarPorCodigoEMPRESTIMO(Long.parseLong(txtCodEmprestimo.getText()));
+                    this.entityToBoundaryEMPRESTIMO(Al);
                 }
                 lblTextoPesqRA.setVisible(false);
             }catch (Exception ee){
@@ -242,6 +244,23 @@ public class EmprestimoBoundary extends Application {
 
             txtCelular.setText(String.valueOf(Al.getCelular()));
             cbSituacao.setValue(Al.getSituacao());
+
+        } else {
+            alertMess.setHeaderText("ALUNO NÃO EXISTE.");
+            alertMess.showAndWait();
+        }
+    }
+
+    public void entityToBoundaryEMPRESTIMO(Emprestimo Al) {
+        if (Al != null) {
+            txtRA.setText(String.valueOf(Al.getRA()));
+            txtNome.setText(Al.getNome());
+
+            txtCelular.setText(String.valueOf(Al.getCelular()));
+            cbSituacao.setValue(Al.getSituacao());
+
+           txtDataEmprestimo.setText(Al.getDataEmprestimo());
+           txtDataEntrega.setText(Al.getDataEntrega());
 
         } else {
             alertMess.setHeaderText("ALUNO NÃO EXISTE.");
