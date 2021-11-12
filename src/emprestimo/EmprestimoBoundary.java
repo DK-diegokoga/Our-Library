@@ -190,6 +190,9 @@ public class EmprestimoBoundary extends Application {
                     txtRA.setDisable(true);
                     btnConcluir.setVisible(true);
                     btnPesq.setVisible(false);
+
+                    Emprestimo Al = control.pesquisarPorCodigo(Long.parseLong(txtRA.getText()));
+                    this.entityToBoundary(Al);
                 }else{
                     System.out.println("pesquisando emprestimo");
                     btnAlterar.setVisible(true);
@@ -211,8 +214,8 @@ public class EmprestimoBoundary extends Application {
         stage.show();
     }
 
-    /*public Aluno boundaryToEntity() {
-        Aluno Al = new Aluno();
+    /*public Emprestimo boundaryToEntity() {
+        Emprestimo Al = new Emprestimo();
         if (valido) {
             Al.setNome(txtNome.getText());
             Al.setEmail(txtEmail.getText());
@@ -230,21 +233,19 @@ public class EmprestimoBoundary extends Application {
             alertWarn.showAndWait();
         }
         return Al;
-    }
+    }*/
 
-    public void entityToBoundary(Aluno Al) {
+    public void entityToBoundary(Emprestimo Al) {
         if (Al != null) {
             txtRA.setText(String.valueOf(Al.getRA()));
             txtNome.setText(Al.getNome());
-            txtEmail.setText(Al.getEmail());
+
             txtCelular.setText(String.valueOf(Al.getCelular()));
-            txtPenalidade.setText(Al.getPenalidade());
-            txtDescricao.setText(Al.getDescricao());
             cbSituacao.setValue(Al.getSituacao());
 
         } else {
             alertMess.setHeaderText("ALUNO NÃO EXISTE.");
             alertMess.showAndWait();
         }
-    }*/
+    }
 }

@@ -1,5 +1,6 @@
 package emprestimo;
 
+import aluno.Aluno;
 import estoque.Estoque;
 import estoque.EstoqueController;
 import javafx.application.Platform;
@@ -78,5 +79,12 @@ public class EmprestimoController {
             txtField.setText(textoDigitado);
             posiciona(txtField);
         });
+    }
+
+    private EmprestimoDao empDao = new EmprestimoDaoImpl();
+
+    public Emprestimo pesquisarPorCodigo(long codigo) {
+
+        return empDao.pesquisarPorCodigo(codigo);
     }
 }
