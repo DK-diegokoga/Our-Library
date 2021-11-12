@@ -47,11 +47,35 @@ CREATE TABLE tbEMPRESTIMO(
      CELULAR_ALUNO BIGINT(11),
      CODIGO_LIVRO INT, FOREIGN KEY (CODIGO_LIVRO) REFERENCES tbLivro(ISBN),
      TITULO_LIVRO VARCHAR(50),
-     DATA_EMPRESTIMO DATE,
-     DATA_ENTREGA DATE,
+     DATA_EMPRESTIMO VARCHAR,
+     DATA_ENTREGA VARCHAR,
      SITUACAO_EMPRESTIMO VARCHAR(20)
 );
 
+/*Insert da tabela Reserva*/
+INSERT INTO tbEMPRESTIMO VALUES(
+      1,
+      1111111111111,
+      'JAPA',
+      11949176476,
+      1111,
+      'O Pequeno Príncipe',
+      '01-11-2022',
+      '03-11-2022',
+      'Regular'
+);
+
+/*Insert da tabela Aluno*/
+
+INSERT INTO tbALUNO VALUES(
+      1111111111111,
+      'JAPA',
+      'JAPA',
+      11970707070,
+      'Regular',
+      'Nenhuma',
+      'Nenhuma'
+);
 
 /*Insert da tabela Funcionario*/
 
