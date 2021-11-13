@@ -2,6 +2,7 @@ package emprestimo;
 
 public class Emprestimo {
 
+    private int codigo;
     private String nome;
     private long RA;
     private long Celular;
@@ -11,6 +12,14 @@ public class Emprestimo {
 
     private int ISBN;
     private String Titulo;
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
 
     public String getNome() {
         return nome;
