@@ -14,6 +14,6 @@ public interface EmprestimoDao {
 
     Emprestimo pesquisarPorCodigoEMPRESTIMO(long codigo);
 
-    Livro pesquisar(int codigo);
+    Emprestimo pesquisarPorCodigoLivro(int codigo);
 }
 

@@ -130,6 +130,7 @@ public class EmprestimoBoundary extends Application {
         txtDataEmprestimo.setDisable(true);
         txtDataEntrega.setDisable(true);
         lblTextoPesqRA.setVisible(false);
+        txtTitulo.setDisable(true);
 
         btnCancelar.setOnAction((e) -> {
             btnCancelar.setVisible(false);
@@ -150,6 +151,8 @@ public class EmprestimoBoundary extends Application {
             lblTextoPesq.setVisible(true);
             lblTextoPesqRA.setVisible(false);
 
+            Limpar();
+
         });
 
         btnConcluir.setOnAction((e) -> {
@@ -158,22 +161,41 @@ public class EmprestimoBoundary extends Application {
             this.entityToBoundaryEMPRESTIMO(new Emprestimo());
             alertWarn.setHeaderText("CADASTRADO COM SUCESSO!");
             alertWarn.showAndWait();*/
-            btnCancelar.fire();
+        try{
+            control.adicionar(boundaryToEntity());
+            //this.entityToBoundaryEMPRESTIMO(new Emprestimo());
+            alertMess.setHeaderText("CADASTRADO COM SUCESSO!");
+            alertMess.showAndWait();
 
+            btnCancelar.fire();
+        } catch (Exception e1) {
+            alertWarn.setHeaderText("PREENCHA TODOS OS CAMPOS CORRETAMENTE!");
+            alertWarn.showAndWait();
+        }
         });
 
         btnAlterar.setOnAction((e) -> {
             txtDataEntrega.setDisable(false);
             cbSituacao.setDisable(false);
             btnAlterar.setVisible(false);
-            btnCancelar.setVisible(true);
+
             btnConcluir.setVisible(true);
         });
 
+        btnAddLivro.setOnAction((e) -> {
+        try{
+            Emprestimo Lv = control.pesquisarPorCodigoLivro(Integer.parseInt(txtCodLivro.getText()));
+            this.entityToBoundaryLivro(Lv);
+        }catch (Exception ee){
+            alertWarn.setHeaderText("Não Existe");
+            alertWarn.showAndWait();
+        }
+        });
 
         btnAdd.setOnAction((e) -> {
-            try {
+
                 Vnovo = true;
+
                 lblTextoPesqRA.setVisible(true);
                 lblTextoPesq.setVisible(false);
                 btnAdd.setVisible(false);
@@ -187,10 +209,7 @@ public class EmprestimoBoundary extends Application {
        //         btnConcluir.setVisible(true);
                 Limpar();
 
-            } catch (Exception e1) {
-                alertWarn.setHeaderText("PREENCHA TODOS OS CAMPOS CORRETAMENTE!");
-                alertWarn.showAndWait();
-            }
+
         });
 
         btnPesq.setOnAction((e) -> {
@@ -203,6 +222,7 @@ public class EmprestimoBoundary extends Application {
 
                     Emprestimo Al = control.pesquisarPorCodigo(Long.parseLong(txtRA.getText()));
                     this.entityToBoundary(Al);
+                    btnCancelar.setVisible(true);
                 }else{
                     System.out.println("pesquisando emprestimo");
                     btnAlterar.setVisible(true);
@@ -217,25 +237,10 @@ public class EmprestimoBoundary extends Application {
             }catch (Exception ee){
                 alertWarn.setHeaderText("Não Existe");
                 alertWarn.showAndWait();
+                btnCancelar.fire();
             }
         });
 
-        btnAddLivro.setOnAction((e) ->{
-            try{
-                if(Vnovo){
-                    System.out.println("pesquisando isbn");
-                    txtCodLivro.setDisable(true);
-                    btnConcluir.setVisible(true);
-                    btnAddLivro.setVisible(false);
-
-                    Livro Lv = control.pesquisarPorCodigoLivro(Integer.parseInt(txtCodLivro.getText()));
-                    this.entityToBoundaryLivro(Lv);
-                }
-            }catch (Exception ee){
-                alertWarn.setHeaderText("Não Existe");
-                alertWarn.showAndWait();
-            }
-        });
 
         stage.setScene(scCeneEmprestimo);
         stage.setTitle("Emprestimo S2");
@@ -249,11 +254,14 @@ public class EmprestimoBoundary extends Application {
             Al.setNome(txtNome.getText());
             Al.setDataEmprestimo(txtDataEmprestimo.getText());
             Al.setDataEntrega(txtDataEntrega.getText());
+            Al.setTitulo(txtTitulo.getText());
             try {
                 Al.setCodigo(Integer.parseInt(txtCodEmprestimo.getText()));
                 Al.setRA(Long.parseLong(txtRA.getText()));
                 Al.setCelular(Long.parseLong(txtCelular.getText()));
                 Al.setSituacao(cbSituacao.getValue());
+                Al.setISBN(Integer.parseInt(txtCodLivro.getText()));
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -289,30 +297,39 @@ public class EmprestimoBoundary extends Application {
            txtDataEmprestimo.setText(Al.getDataEmprestimo());
            txtDataEntrega.setText(Al.getDataEntrega());
 
+            txtTitulo.setText(String.valueOf(Al.getISBN()));
+            btnCancelar.setVisible(true);
         } else {
-            alertMess.setHeaderText("ALUNO NÃO EXISTE.");
+            alertMess.setHeaderText("EMPRESTIMO NÃO EXISTE.");
             alertMess.showAndWait();
+            btnCancelar.fire();
+            btnCancelar.setVisible(false);
         }
     }
 
-    public void entityToBoundaryLivro(Livro Lv) {
+    public void entityToBoundaryLivro(Emprestimo Lv) {
         if (Lv != null) {
-            txtCodLivro.setText(String.valueOf(Lv.getISBN()));
-            txtTitulo.setText(Lv.getTITULO());
-
+            //txtTitulo.setText(String.valueOf(Lv.getISBN()));
+            txtTitulo.setText(Lv.getTitulo());
+            txtCodLivro.setDisable(true);
+            btnAddLivro.setDisable(true);
         } else {
+
+            txtCodLivro.clear();
+            txtTitulo.clear();
             alertMess.setHeaderText("LIVRO NÃO EXISTE.");
             alertMess.showAndWait();
         }
     }
 
     public void Limpar(){
-        txtCodLivro.clear();
         txtNome.clear();
         txtCodEmprestimo.clear();
         txtDataEntrega.clear();
         txtDataEmprestimo.clear();
         txtCelular.clear();
         txtRA.clear();
+        txtCodLivro.clear();
+        txtTitulo.clear();
     }
 }

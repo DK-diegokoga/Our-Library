@@ -79,36 +79,17 @@ public class EmprestimoDaoImpl implements EmprestimoDao{
         }
         return null;
     }
-/*
-    public List<Emprestimo> colocarValores(){
-        List<Emprestimo> lista = new ArrayList<>();
-        try (Connection con = DriverManager.getConnection(URL, USER, PASSWORD)) {
-            String sql = "SELECT CODIGO_LIVRO,TITULO_LIVRO FROM tbEMPRESTIMO";
-            PreparedStatement stmt = con.prepareStatement(sql);
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                Emprestimo Al = new Emprestimo();
-                Al.setISBN(rs.getInt("CODIGO_LIVRO"));
-                Al.setTitulo(rs.getString("titulo_LIVRO"));
-                lista.add(Al);
-            }
-            return lista;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return lista;
-    }
-*/
-    public Livro pesquisar(int cod) {
+
+    public Emprestimo pesquisarPorCodigoLivro(int cod) {
         try (Connection conPQ = DriverManager.getConnection(URL, USER, PASSWORD)) {
-            String sqlPQ = "SELECT ISBN,TITULO FROM tbLIVRO WHERE ISBN LIKE ?";
+            String sqlPQ = "SELECT ISBN, TITULO FROM tbLIVRO WHERE ISBN LIKE ?";
             PreparedStatement stmtPQ = conPQ.prepareStatement(sqlPQ);
             stmtPQ.setLong(1, cod);
             ResultSet rs = stmtPQ.executeQuery();
             while (rs.next()) {
-                Livro Lv = new Livro();
+                Emprestimo Lv = new Emprestimo();
                 Lv.setISBN(rs.getInt("ISBN"));
-                Lv.setTITULO(rs.getString("TITULO"));
+                Lv.setTitulo(rs.getString("TITULO"));
                 return Lv;
             }
         } catch (SQLException e) {
