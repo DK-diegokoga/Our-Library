@@ -294,10 +294,11 @@ public class EmprestimoBoundary extends Application {
             txtCelular.setText(String.valueOf(Al.getCelular()));
             cbSituacao.setValue(Al.getSituacao());
 
-           txtDataEmprestimo.setText(Al.getDataEmprestimo());
-           txtDataEntrega.setText(Al.getDataEntrega());
+            txtDataEmprestimo.setText(Al.getDataEmprestimo());
+            txtDataEntrega.setText(Al.getDataEntrega());
 
-            txtTitulo.setText(String.valueOf(Al.getISBN()));
+            txtCodLivro.setText(String.valueOf(Al.getISBN()));
+            txtTitulo.setText(Al.getTitulo());
             btnCancelar.setVisible(true);
         } else {
             alertMess.setHeaderText("EMPRESTIMO NÃO EXISTE.");
