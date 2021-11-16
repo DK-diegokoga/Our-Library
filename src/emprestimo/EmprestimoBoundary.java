@@ -165,19 +165,17 @@ public class EmprestimoBoundary extends Application {
         try{
 
             if (Alterar){
-                control.adicionar(boundaryToEntity());
-                //this.entityToBoundaryEMPRESTIMO(new Emprestimo());
-                alertMess.setHeaderText("CADASTRADO COM SUCESSO!");
-                alertMess.showAndWait();
-            }else{
                 control.alterar(boundaryToEntity());
+
+                //this.entityToBoundaryEMPRESTIMO(new Emprestimo());
                 alertMess.setHeaderText("ALTERADO COM SUCESSO!");
                 alertMess.showAndWait();
+            }else{
+                control.adicionar(boundaryToEntity());
+                alertMess.setHeaderText("CADASTRADO COM SUCESSO!");
+                alertMess.showAndWait();
             }
-            control.adicionar(boundaryToEntity());
-            //this.entityToBoundaryEMPRESTIMO(new Emprestimo());
-            alertMess.setHeaderText("CADASTRADO COM SUCESSO!");
-            alertMess.showAndWait();
+
 
 
         } catch (Exception e1) {
