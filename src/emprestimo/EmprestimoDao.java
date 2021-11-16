@@ -10,6 +10,8 @@ public interface EmprestimoDao {
 
     void adicionar(Emprestimo Al);
 
+    void alterar(Emprestimo Al);
+
     Emprestimo pesquisarPorCodigo(long codigo);
 
     Emprestimo pesquisarPorCodigoEMPRESTIMO(long codigo);

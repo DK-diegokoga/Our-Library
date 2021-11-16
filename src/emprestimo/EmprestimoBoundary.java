@@ -30,7 +30,7 @@ public class EmprestimoBoundary extends Application {
     private Button btnConcluir = new Button("Concluir");
     private Button btnCancelar = new Button("Cancelar");
 
-    private boolean valido = false;
+    private boolean Alterar = false;
 
     private boolean Vnovo = false;
 
@@ -140,6 +140,7 @@ public class EmprestimoBoundary extends Application {
             btnAddLivro.setDisable(true);
             btnConcluir.setVisible(false);
             Vnovo = false;
+            Alterar = false;
 
             txtCodEmprestimo.setDisable(false);
             txtCodLivro.setDisable(true);
@@ -162,23 +163,35 @@ public class EmprestimoBoundary extends Application {
             alertWarn.setHeaderText("CADASTRADO COM SUCESSO!");
             alertWarn.showAndWait();*/
         try{
+
+            if (Alterar){
+                control.adicionar(boundaryToEntity());
+                //this.entityToBoundaryEMPRESTIMO(new Emprestimo());
+                alertMess.setHeaderText("CADASTRADO COM SUCESSO!");
+                alertMess.showAndWait();
+            }else{
+                control.alterar(boundaryToEntity());
+                alertMess.setHeaderText("ALTERADO COM SUCESSO!");
+                alertMess.showAndWait();
+            }
             control.adicionar(boundaryToEntity());
             //this.entityToBoundaryEMPRESTIMO(new Emprestimo());
             alertMess.setHeaderText("CADASTRADO COM SUCESSO!");
             alertMess.showAndWait();
 
-            btnCancelar.fire();
+
         } catch (Exception e1) {
             alertWarn.setHeaderText("PREENCHA TODOS OS CAMPOS CORRETAMENTE!");
             alertWarn.showAndWait();
         }
+            btnCancelar.fire();
         });
 
         btnAlterar.setOnAction((e) -> {
             txtDataEntrega.setDisable(false);
             cbSituacao.setDisable(false);
             btnAlterar.setVisible(false);
-
+            Alterar = true;
             btnConcluir.setVisible(true);
         });
 
@@ -250,7 +263,6 @@ public class EmprestimoBoundary extends Application {
 
     public Emprestimo boundaryToEntity() {
         Emprestimo Al = new Emprestimo();
-        if (valido) {
             Al.setNome(txtNome.getText());
             Al.setDataEmprestimo(txtDataEmprestimo.getText());
             Al.setDataEntrega(txtDataEntrega.getText());
@@ -265,10 +277,7 @@ public class EmprestimoBoundary extends Application {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        } else {
-            alertWarn.setHeaderText("PREENCHA TODOS OS CAMPOS CORRETAMENTE!");
-            alertWarn.showAndWait();
-        }
+
         return Al;
     }
 

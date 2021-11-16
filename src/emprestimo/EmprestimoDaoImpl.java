@@ -35,6 +35,19 @@ public class EmprestimoDaoImpl implements EmprestimoDao{
         }
     }
 
+    public void alterar(Emprestimo Al) {
+        try (Connection con = DriverManager.getConnection(URL, USER, PASSWORD)){
+            String sqlADD = "UPDATE TBEMPRESTIMO SET DATA_ENTREGA = ?, SITUACAO_EMPRESTIMO =? WHERE CODIGO_EMPRESTIMO = ?";
+            PreparedStatement stmtADD = con.prepareStatement(sqlADD);
+            stmtADD.setString(1, Al.getDataEntrega());
+            stmtADD.setString(2, Al.getSituacao());
+            stmtADD.setInt(3, Al.getCodigo());
+            stmtADD.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
     public Emprestimo pesquisarPorCodigo(long RA) {
         try (Connection conPQ = DriverManager.getConnection(URL, USER, PASSWORD)) {
             String sqlPQ = "SELECT * FROM tbaluno WHERE RA LIKE ?";

@@ -39,4 +39,8 @@ public class EmprestimoController {
         empDao.adicionar(Al);
     }
 
+    public void alterar(Emprestimo Al){
+        empDao.alterar(Al);
+    }
+
 }

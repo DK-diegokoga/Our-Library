@@ -54,11 +54,11 @@ public class Emprestimo {
     }
 
     public String getDataEntrega() {
-        return DataEmprestimo;
+        return DataEntrega;
     }
 
-    public void setDataEntrega(String dataEmprestimo) {
-        DataEmprestimo = dataEmprestimo;
+    public void setDataEntrega(String dataEntrega) {
+        DataEntrega = dataEntrega;
     }
 
     public String getSituacao() {
